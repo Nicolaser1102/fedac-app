@@ -11,4 +11,9 @@ class UsuarioController extends Controller
     {
         return view ('profile');
     }
+
+    public function changePassword()
+    {
+        return view ('changePassword');
+    }
 }

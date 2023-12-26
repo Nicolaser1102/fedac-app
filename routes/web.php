@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,8 @@ Route::middleware([
 
     //Ruta para acceder a las opciones de perfil
     Route::get('/profile',[UsuarioController::class, 'profile']);
+    Route::get('/changePassword', [UsuarioController::class, 'changePassword']);
+
+    //Ruta que me permite utilizar el controlador de Producto
+    Route::resource('/producto', ProductoController::class) ->names('producto');
 });
