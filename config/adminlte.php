@@ -321,7 +321,7 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -367,22 +367,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
     ],
 
     /*
@@ -537,5 +522,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

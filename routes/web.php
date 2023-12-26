@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    //Ruta para acceder a las opciones de perfil
+    Route::get('/profile',[UsuarioController::class, 'profile']);
 });
