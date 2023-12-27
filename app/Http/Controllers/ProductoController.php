@@ -21,7 +21,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
-        return "Nuevo Producto";
+        return view ('administrador.addProducto');
     }
 
     /**
@@ -29,7 +29,8 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Guardar un producto
+        return "Listo para grabar";
     }
 
     /**
