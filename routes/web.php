@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PermisoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +36,11 @@ Route::middleware([
 
     //Ruta que me permite utilizar el controlador de Producto
     Route::resource('/producto', ProductoController::class) ->names('producto');
+
+    //Ruta de recursos para controlar los roles de Usuario
+    Route::resource('/roles', RoleController::class)->names('roles');
+
+
+    //Ruta de recursos para controlar los permisos de los usuarios
+    Route::resource('/permisos', PermisoController::class)->names('permisos');
 });
