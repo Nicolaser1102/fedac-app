@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RoleController;
@@ -43,4 +44,7 @@ Route::middleware([
 
     //Ruta de recursos para controlar los permisos de los usuarios
     Route::resource('/permisos', PermisoController::class)->names('permisos');
+
+    //Ruta de recursos para controlar la vista de la lista de Usuarios
+    Route::resource('/usuarios', AsignarController::class)->names('asignar');
 });

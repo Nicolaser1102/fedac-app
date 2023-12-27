@@ -11,6 +11,18 @@ class ProductoController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    //Función constructora para proteger las rutas
+    public function __construct()
+    {
+        // $this->middleware('can: Administrar productos')->only('index');
+        // $this->middleware('can: Crear productos')->only('create');
+        // $this->middleware('can: Administrar productos')->only('store');
+        // $this->middleware('can: Administrar productos')->only('edit');
+        // $this->middleware('can: Administrar productos')->only('update');
+        // $this->middleware('can: Administrar productos')->only('destroy');
+    }
+
     public function index()
     {
         //Variable producto que recibe todos los registros de la tabla;
