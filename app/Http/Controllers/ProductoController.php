@@ -13,8 +13,12 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
-        return "Lista de Productos";
+        //Variable producto que recibe todos los registros de la tabla;
+        $productos = ModelsProducto::all();
+
+
+
+        return view('administrador.listaProducto', compact('productos'));
     }
 
     /**
@@ -76,7 +80,9 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Encontar el producto según el id para utilizar la lógica de la vista editProducto
+        $producto = ModelsProducto::find($id);
+        return view('administrador.editProducto',compact('producto'));
     }
 
     /**
@@ -84,7 +90,20 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $producto = ModelsProducto::find($id);
+
+        $producto->nombreProd = $request->input('nombreProd');
+        $producto->codigoBarras = $request->input('codigoBarras');
+        $producto->descripcionProd = $request->input('descripcionProd');
+        $producto->precioProd = $request->input('precioProd');
+        $producto->fechaVencProd = $request->input('fechaVencProd');
+        $producto->stock = $request->input('stock');
+        $producto->imagenUrlProd = $request->input('imagenUrlProd');
+
+        $producto->save();
+
+        return back()->with('message','ActualizadoCorrectamente');
+
     }
 
     /**
@@ -92,6 +111,9 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $producto = ModelsProducto::find($id);
+
+        $producto->delete();
+        return back();
     }
 }
