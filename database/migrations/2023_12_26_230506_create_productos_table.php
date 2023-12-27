@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombreProd', 100);
             $table->string('descripcionProd', 500);
             $table->double('precioProd',3,2);
-            $table->dateTime('fechaVencProd');
+            $table->date('fechaVencProd');
             $table->string('imagenUrlProd',200);
 
 

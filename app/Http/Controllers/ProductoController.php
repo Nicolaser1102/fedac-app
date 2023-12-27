@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Producto as ModelsProducto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -30,8 +32,36 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //Guardar un producto
-        return "Listo para grabar";
+
+
+        //Realizar validaciones a la request
+        $validacion = $request-> validate([
+            'nombreProd' =>'required|max:100',
+            'codigoBarras' => 'required|numeric|max:10000000000|unique:productos,codigoBarras',
+            'descripcionProd' => 'required|max:500',
+            'precioProd' => 'required|numeric',
+            'fechaVencProd' => 'required|date',
+            'stock' => 'required|numeric',
+            'imagenUrlProd' => 'required'
+        ]);
+
+        $producto = new ModelsProducto();
+
+        $producto->nombreProd = $request->input('nombreProd');
+        $producto->codigoBarras = $request->input('codigoBarras');
+        $producto->descripcionProd = $request->input('descripcionProd');
+        $producto->precioProd = $request->input('precioProd');
+        $producto->fechaVencProd = $request->input('fechaVencProd');
+        $producto->stock = $request->input('stock');
+        $producto->imagenUrlProd = $request->input('imagenUrlProd');
+
+        $producto->save();
+
+
+        return back()->with('message', 'ProductoCreado');
+
     }
+
 
     /**
      * Display the specified resource.
