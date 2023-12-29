@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\VentaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,8 @@ Route::middleware([
 
     //Ruta de recursos para controlar la vista de la lista de Usuarios
     Route::resource('/usuarios', AsignarController::class)->names('asignar');
+
+
+     //Ruta de recursos para controlar la vista de añadir una nueva venta
+     Route::resource('/ventas', VentaController::class)->names('ventas');
 });

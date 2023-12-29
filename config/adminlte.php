@@ -346,6 +346,22 @@ return [
             'icon' => 'fas fa-fw fa-plus-circle',
             'can' => "Crear productos"
         ],
+        ['header' => 'VENDEDOR'],
+        [
+            'text' => 'Nueva venta',
+            'route'  => 'ventas.create',
+
+            'icon' => 'fas fa-fw fa-plus-circle',
+            //Poner los permisos
+        ],
+        [
+            'text' => 'Lista de ventas',
+            'route'  => 'ventas.index',
+            'icon' => 'fas fa-fw fa-shopping-basket',
+            //Poner los permisos
+
+        ],
+
         ['header' => 'OPCIONES DE PERFIL'],
         [
             'text' => 'Perfil',
