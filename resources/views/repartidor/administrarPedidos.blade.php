@@ -3,13 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Lista ventas</h1>
+    <h1>Administrar pedidos</h1>
 @stop
 
 @section('content')
-    <P>Aquí se encontrará la tabla de ventas</P>
-    {{-- {{$userVentaVar}} --}}
-    AQUÍ SE TIENE QUE TRAER LOS DATOS DE TODAS LAS VENTAS DE ACUERDO AL ID DEL USUARIO
+    <p>Aquí se podrán administrar todos los pedidos</p>
 @stop
 
 @section('css')

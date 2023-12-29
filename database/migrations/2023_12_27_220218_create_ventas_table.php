@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->string('codigoVenta', 10); //venta_0001;
+            $table->string('codigoVenta', 10)->index(); //venta_0001;
             $table->foreignId('id_producto')->nullable()->constrained('productos')->cascadeOnUpdate()->nullOnDelete();
             $table->integer('cant_Producto');
 

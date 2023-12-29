@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\UsersVenta;
 use Illuminate\Http\Request;
 
-class VendedorController extends Controller
+class UserVentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,6 +14,7 @@ class VendedorController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -28,6 +31,20 @@ class VendedorController extends Controller
     public function store(Request $request)
     {
         //
+
+
+        $newUserVenta = new UsersVenta();
+
+        $newUserVenta->direccion = $request->input('direccion');
+        $newUserVenta->numTelefono = $request->input('numTelefono');
+        $newUserVenta->estado = $request->input('estado');
+        $newUserVenta->total = $request->input('total');
+        $newUserVenta->codVenta = $request->input('codVenta');
+        $newUserVenta->user_id = $request->input('user_id');
+        $newUserVenta->save();
+
+
+        return view('vendedor.listaVenta');
     }
 
     /**

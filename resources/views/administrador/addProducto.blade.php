@@ -89,7 +89,7 @@
                 {{-- Input del stock del producto --}}
 
                 <x-adminlte-input name="stock" label="Stock del Producto" placeholder="" type="number"
-                igroup-size="sm" min=1 max=10 fgroup-class="col-md-4" value="{{old('stock')}}">
+                igroup-size="sm" min=1 max=500 fgroup-class="col-md-4" value="{{old('stock')}}">
                 <x-slot name="appendSlot">
                     <div class="input-group-text bg-dark">
                         <i class="fas fa-hashtag"></i>

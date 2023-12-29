@@ -87,7 +87,6 @@
             <div class="card mr-0 ml-1 col-4">
                 <div class="card-header">
                     <h2>ID Venta: <span style="color:#808080" id="spanCodVenta">{{$codVenta}}</span></h2>
-                    <input type="button" value="Nueva Venta" onclick="">
                 </div>
                 <div class="card-body">
                     Total productos de venta:
@@ -131,12 +130,55 @@
                         </tbody>
                       </table>
 
-                      <p>Valor a pagar: $ {{$valorTotal}}</p>
+                      <p>Valor a pagar:  <strong>$ {{$valorTotal}}</strong></p>
+
+                      @if (count($productosCodigoVenta) > 0)
+                        <x-adminlte-button label="Finalizar Venta" theme="success" icon="fas fa-thumbs-up" data-toggle="modal" data-target="#modalPurple" class="float-right"/>
+                      @endif
 
                 </div>
             </div>
 
     </div>
+
+
+    {{-- Modal para registrar un nuevo registro en user_venta --}}
+<x-adminlte-modal id="modalPurple" title="Nuevo permiso" theme="purple"
+icon="fas fa-bolt" size='lg' disable-animations>
+    <form action="{{route('users_ventas.store')}}" method="post">
+        @csrf
+
+        <div class="row">
+            <x-adminlte-input name="direccion" label="Dirección de entrega" placeholder="Aquí su dirección..."
+            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        </div>
+        <div class="row">
+            <x-adminlte-input name="numTelefono" label="Número de teléfono" placeholder="Aquí el número de teléfono de contacto..."
+            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        </div>
+
+        {{-- Campos escondidos para valor Total y el estado, e incluido el user_id + codVenta --}}
+        <div class="row">
+            <x-adminlte-input type="hidden" name="total" label="" value="{{$valorTotal}}"
+            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        </div>
+        <div class="row">
+            <x-adminlte-input type="hidden" name="estado" label="" value="porAceptar" placeholder="Aquí el permiso..."
+            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        </div>
+        <div class="row">
+            <x-adminlte-input type="hidden" name="user_id" label="" value="{{$id}}" placeholder="Aquí el permiso..."
+            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        </div>
+        <div class="row">
+            <x-adminlte-input type="hidden" name="codVenta" label="" value="{{$codVenta}}" placeholder="Aquí el permiso..."
+            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        </div>
+
+        <x-adminlte-button type="submit" label="Guardar" theme="outline-danger" icon="fas fa-key"></x-adminlte-button>
+
+    </form>
+</x-adminlte-modal>
 
 @stop
 
@@ -147,28 +189,7 @@
 
 @section('js')
     <script> console.log('Hi!');
-    generarCodigoAleatorio = function(){
 
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const charactersLength = characters.length;
-        let counter = 0;
-        while (counter < 4) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        counter += 1;
-        }
-
-        let cmpTextCodigoVenta;
-        let cmpInputCodigoVenta;
-
-        cmpTextCodigoVenta = document.getElementById('spanCodVenta');
-        let codVentaFinal = 'Venta_'+result
-        cmpTextCodigoVenta.innerText =  codVentaFinal;
-
-        cmpInputCodigoVenta = document.getElementById('inputCodVenta');
-        cmpInputCodigoVenta.value = codVentaFinal;
-
-        }
     </script>
 
 @stop

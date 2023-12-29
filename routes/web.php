@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AsignarController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\UserVentaController;
 use App\Http\Controllers\VentaController;
 
 /*
@@ -52,4 +54,13 @@ Route::middleware([
 
      //Ruta de recursos para controlar la vista de añadir una nueva venta
      Route::resource('/ventas', VentaController::class)->names('ventas');
+
+
+     //Ruta de recursos para controlar la vista de la tabla user_venta;
+     Route::resource('/user_venta', UserVentaController::class)->names('users_ventas');
+
+
+
+     //Ruta de recursos para controlar las vistas de Pedidos;
+     Route::resource('/pedidos', PedidoController::class)->names('pedidos');
 });

@@ -312,39 +312,39 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'ADMININSTRACIÓN ROLES',
-        'can' => 'Administrar roles'
+        // 'can' => 'Administrar roles'
     ],
         [
             'text'        => 'Roles',
             'route'         => 'roles.index',
             'icon'        => 'fas fa-fw fa-users',
-            'can' => "Administrar roles"
+            // 'can' => "Administrar roles"
 
         ],
         [
             'text'        => 'Permisos',
             'route'         => 'permisos.index',
             'icon'        => 'fas fa-fw fa-unlock',
-            'can' => "Administrar permisos"
+            // 'can' => "Administrar permisos"
         ],
         [
             'text'        => 'Usuarios',
             'route'         => 'asignar.index',
             'icon'        => 'fas fa-fw fa-list-ul',
-            'can' => "Administrar usuarios"
+            // 'can' => "Administrar usuarios"
         ],
         ['header' => 'PRODUCTOS'],
         [
             'text' => 'Administrar Productos',
             'route'  => 'producto.index',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            'can' => "Administrar productos"
+            // 'can' => "Administrar productos"
         ],
         [
             'text' => 'Nuevo Producto',
             'route'  => 'producto.create',
             'icon' => 'fas fa-fw fa-plus-circle',
-            'can' => "Crear productos"
+            // 'can' => "Crear productos"
         ],
         ['header' => 'VENDEDOR'],
         [
@@ -357,6 +357,21 @@ return [
         [
             'text' => 'Lista de ventas',
             'route'  => 'ventas.index',
+            'icon' => 'fas fa-fw fa-shopping-basket',
+            //Poner los permisos
+
+        ],
+        ['header' => 'REPARTIDOR'],
+        [
+            'text' => 'Aceptar Pedidos',
+            'route'  => 'pedidos.create',
+
+            'icon' => 'fas fa-fw fa-plus-circle',
+            //Poner los permisos
+        ],
+        [
+            'text' => 'Administrar pedidos',
+            'route'  => 'pedidos.index',
             'icon' => 'fas fa-fw fa-shopping-basket',
             //Poner los permisos
 

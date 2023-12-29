@@ -65,7 +65,7 @@ class User extends Authenticatable
 
 
     //Función que relaciona Usuarios con Productos
-    public function productos(){
-        return $this->belongsToMany(Producto::class, 'ventas');
+    public function ventas(){
+        return $this->belongsToMany(Venta::class, 'users_ventas','user_id','codVenta');
     }
 }
