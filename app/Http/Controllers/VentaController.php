@@ -29,8 +29,9 @@ class VentaController extends Controller
         $ventasPorIdVendedor = UsersVenta::where('user_id', $id_currentUser)->get();
 
         $ventasPorCodVenta = "";
+        $codVenta = "";
 
-        return view('vendedor.listaVenta', compact( 'ventasPorIdVendedor','ventasPorCodVenta'));
+        return view('vendedor.listaVenta', compact( 'ventasPorIdVendedor','ventasPorCodVenta','codVenta'));
     }
 
     /**
@@ -60,7 +61,7 @@ class VentaController extends Controller
 
         //Lista de productos disponibles para la venta
         $productos = Producto::all();
-        return view('vendedor.addVenta', compact('id','codVenta' ,'productos', 'codVenta','productosCodigoVenta'));
+        return view('vendedor.addVenta', compact('id','codVenta' ,'productos','productosCodigoVenta'));
     }
 
     /**
@@ -68,15 +69,7 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //Guardando una venta
-        //Realizar validaciones a la request
-        // $validacion = $request-> validate([
 
-        //     'codigoVenta' => 'required',
-        //     'id_producto' => 'required',
-        //     'cantProducto' => 'required',
-        // ]);
 
         //Se registra la nueva venta
         $venta = new Venta();
@@ -121,7 +114,7 @@ class VentaController extends Controller
 
         $ventasPorIdVendedor = UsersVenta::where('user_id', $id_currentUser)->get();
 
-        return view('vendedor.listaVenta', compact('ventasPorCodVenta','ventasPorIdVendedor'));
+        return view('vendedor.listaVenta', compact('ventasPorCodVenta','ventasPorIdVendedor','codVenta'));
     }
 
     /**

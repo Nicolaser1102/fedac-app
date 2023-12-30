@@ -7,57 +7,43 @@
 @stop
 
 @section('content')
-    <P>Aquí se encontrará la tabla de ventas</P>
-    {{-- {{$userVentaVar}} --}}
-    AQUÍ SE TIENE QUE TRAER LOS DATOS DE TODAS LAS VENTAS DE ACUERDO AL ID DEL USUARIO
-
-    @foreach ($ventasPorIdVendedor as $venta)
-            {{$venta->ventas}}
-    @endforeach
 
     <div class="d-flex flex-row">
-        <div>
+        <div class="card col-6 mr-0 mr-1 p-4">
 
-                {{-- Setup data for datatables --}}
+
             @php
-            $heads = [
-                'ID',
-                'Name',
-                ['label' => 'Phone', 'width' => 40],
-                ['label' => 'Actions', 'no-export' => true, 'width' => 5],
-            ];
-
-
+                $heads = [
+                    'Cod. venta',
+                    ['label' => 'Total', 'width' => 5],
+                    ['label' => 'Estado', 'width' => 5],
+                    ['label' => 'Visualizar productos', 'no-export' => true, 'width' => 5],
+                ];
+                $cont = 0;
+                $direccion = "";
+                $telefonoContacto = "";
             @endphp
 
-            {{-- Minimal example / fill data using the component slot --}}
+            {{-- Tabla para visualizar las ventas por usuario --}}
             <x-adminlte-datatable id="table1" :heads="$heads">
 
 
                         @foreach($ventasPorIdVendedor as $venta)
-
-
-
-                                 {{-- @foreach ($pedido->userVenta as $userVenta) --}}
-
-                                    {{-- {{$pedido->userVenta->ventas->productos}} --}}
                                     <tr>
                                         <td>{{$venta->codVenta}}</td>
                                         <td>{{$venta->total}}</td>
-                                        <td></td>
+                                        <td>{{$venta->estado}}</td>
                                         <td>
-                                            <a href="{{route('ventas.edit' , $venta->codVenta)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                                                <i class="fa fa-lg fa-fw fa-check-square"></i>
+                                            <a href="{{route('ventas.edit' , $venta->codVenta)}}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Visualizar productos">
+                                                <i class="fa fa-lg fa-fw fa-eye"></i>
+                                                @php
+                                                    $direccion = $venta->direccion;
+                                                    $telefonoContacto = $venta->numTelefono;
+                                                @endphp
                                             </a>
-
                                         </td>
                                     </tr>
-                                {{-- @endforeach --}}
-
                         @endforeach
-
-
-
 
             </x-adminlte-datatable>
         </div>
@@ -66,30 +52,53 @@
 
 
 
-        <div class="mt-10">
-            @if ($ventasPorCodVenta != "")
-            <ul class="list-group">
-                @foreach ( $ventasPorCodVenta as $productoCodigoVenta )
-                    <li class="list-group-item" aria-current="true">
-                        {{$productoCodigoVenta->productos->nombreProd}}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                              Default checkbox
-                            </label>
+        <div class="card col-6 mr-0 p-3">
+            @if ($ventasPorCodVenta != "" && $codVenta != "")
+                <div class="card-header">
+                    <p class="text-warning-emphasis">Lista de productos de la venta:
+                    <strong> {{$codVenta}} </strong></p>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre Prod.</th>
+                            <th scope="col">Cant</th>
+                          </tr>
+                        </thead>
+                        <tbody>
 
-                            <a href="{{ route('pedidos.despachar', $productoCodigoVenta->codigoVenta) }} " class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                                <i class="fa fa-lg fa-fw fa-bath"></i>
-                            </a>
-                        </div>
-                    </li>
-                @endforeach
+                            @foreach ($ventasPorCodVenta as $productoCodigoVenta)
+                            @php
+                                $cont = $cont+1;
+                            @endphp
+                            <tr>
+                                <th scope="row">{{$cont}}</th>
+                                <td>{{$productoCodigoVenta->productos->nombreProd}}</td>
+                                <td>{{$productoCodigoVenta->cant_Producto}}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
 
-            </ul>
+                      </table>
+                      <hr>
+                      <p><strong>- Dirección: </strong>{{$direccion}}</p>
+                      <p><strong>- Teléfono de contacto: </strong>{{ $telefonoContacto}}</p>
+                </div>
 
+            @else
+                <div class="card-body">
+                    <h2>No se ha seleccionado ninguna venta</h2>
+                    <p class=".text-light-emphasis">Seleccione una venta de la tabla de la izquierda, para
+                        visualizar sus productos
+                    </p>
+                </div>
             @endif
 
+
         </div>
+
     </div>
 
 @stop
@@ -101,3 +110,5 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+
+

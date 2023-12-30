@@ -18,7 +18,7 @@
                 'ID',
                 'Name',
                 ['label' => 'Phone', 'width' => 40],
-                ['label' => 'Actions', 'no-export' => true, 'width' => 5],
+                ['label' => 'Acciones', 'no-export' => true, 'width' => 5],
             ];
 
 
@@ -33,9 +33,6 @@
                             @if ($pedido->estado == "Solicitado")
 
 
-                                 {{-- @foreach ($pedido->userVenta as $userVenta) --}}
-
-                                    {{-- {{$pedido->userVenta->ventas->productos}} --}}
                                     <tr>
                                         <td>{{$pedido->userVenta}}</td>
                                         <td>a</td>

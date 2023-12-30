@@ -7,18 +7,17 @@
 @stop
 
 @section('content')
-    <P>La pagina nueva Pagina está funcionando</P>
-    <h2>El id del current user (vendedor) es: <span class="strong">{{ $id }}</span></h2>
-
-
-    <p>Lista de Productos</p>
-
     <div class="d-flex flex-row">
 
 
 
         <div class="card col-8 mr-0">
-            <div class="card-body p-0">
+            <div class="card-header mb-2 mt-2">
+                <h4>
+                    <strong>Lista de productos</strong>
+                </h4>
+            </div>
+            <div class="card-body">
 
                 @php
                     $heads = [['label' => 'Cod.', 'width' => 3], ['label' => 'Nombr.', 'no-export' => true, 'width' => 5], ['label' => 'Desc.', 'no-export' => true, 'width' => 5], ['label' => '$', 'no-export' => true, 'width' => 2], ['label' => 'Stock', 'no-export' => true, 'width' => 3] ,['label' => 'Agr. Producto', 'no-export' => true, 'width' => 7]];
@@ -43,7 +42,7 @@
 
                 @endphp
 
-                {{-- Minimal example / fill data using the component slot --}}
+                {{-- TABLA QUE MUESTRAN TODOS LOS PRODUCTOS --}}
                 <x-adminlte-datatable id="tablaProductos" :heads="$heads" :config="$config">
                     @foreach ($productos as $producto)
                         <tr>
@@ -94,9 +93,8 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Cod.</th>
-                            <th scope="col">Cant.</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Cant.</th>
                             <th scope="col">Total</th>
                             <th scope="col">Acción</th>
                           </tr>
@@ -104,19 +102,13 @@
                         <tbody>
                     @foreach ($productosCodigoVenta as $productoVenta)
                           <tr>
-                            <th scope="row">{{$productoVenta->id_producto}}</th>
+                            <th scope="row">{{$productoVenta->productos->nombreProd}}</th>
                             <td>{{$productoVenta->cant_Producto}}</td>
+                            <td>$ {{($productoVenta->cant_Producto)*$productoVenta->productos->precioProd}}</td>
 
+                                {{-- Sumatorio del valor total --}}
+                                {{$valorTotal = $valorTotal+(($productoVenta->cant_Producto)*$productoVenta->productos->precioProd)}}
 
-
-                            @foreach ($productos as $producto)
-                                @if ($producto->id == $productoVenta->id_producto)
-                                    <td>{{$producto->nombreProd}}</td>
-                                    <td>$ {{($productoVenta->cant_Producto)*$producto->precioProd}}</td>
-                                    {{$valorTotal = $valorTotal+(($productoVenta->cant_Producto)*$producto->precioProd)}}
-                                @endif
-
-                            @endforeach
                             <td>
                                 <form style="display: inline" action="{{route('ventas.destroy', $productoVenta)}}" method="post" class="formEliminarProducto">
                                     @csrf
@@ -126,7 +118,6 @@
                             </td>
                     @endforeach
                           </tr>
-
                         </tbody>
                       </table>
 
