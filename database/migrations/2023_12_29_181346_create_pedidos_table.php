@@ -23,6 +23,7 @@ return new class extends Migration
 
 
             $table->foreignId('id_UserVenta')
+            ->nullable()
             ->constrained('users_ventas')
             ->cascadeOnUpdate()
             ->nullOnDelete();

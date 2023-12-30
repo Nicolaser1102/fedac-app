@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\UserVentaController;
 use App\Http\Controllers\VentaController;
+use App\Models\Pedido;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,23 @@ Route::middleware([
 
 
 
-     //Ruta de recursos para controlar las vistas de Pedidos;
+    //  Ruta personalizada para despachar el pedido;
+    //  Route::get('/pedidos/despachar', 'PedidoController@create');
+
+
+
+    //Ruta de recursos para controlar las vistas de Pedidos;
      Route::resource('/pedidos', PedidoController::class)->names('pedidos');
+
+
+     //  Ruta personalizada para despachar el pedido según su código de venta;
+    Route::get('/pedidos/despachar/{codVenta}', [PedidoController::class, 'despachar'])->name('pedidos.despachar');
+    //Ruta personalizada para visualizar la lista de pedidos
+    Route::get('/pedidos/pedidosEntregados', [PedidoController::class, 'pedidosEntregados'])->name('pedidos.pedidosEntregados');
+
+
+
+
+
+
 });

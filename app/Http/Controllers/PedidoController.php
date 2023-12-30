@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedido;
 use App\Models\UsersVenta;
+use App\Models\Venta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
@@ -12,9 +15,16 @@ class PedidoController extends Controller
      */
     public function index()
     {
+        //Obtener id actual (vendedor)
+        $id_currentUser = Auth::id();
 
+        //Obtener todos los pedidos del usuario vendedor
+        $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
 
-        return view('repartidor.administrarPedidos');
+        //Obtener las
+        $ventasPorCodVenta = "";
+
+        return view('repartidor.administrarPedidos', compact('pedidos', 'ventasPorCodVenta'));
     }
 
     /**
@@ -34,21 +44,60 @@ class PedidoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store($codVenta)
     {
-        //
+
+        // $userVentaEncontrada = UsersVenta::where('codVenta', $codVenta)->first();
+
+
+        // $pedido = Pedido::where('id_UserVenta', $userVentaEncontrada->id)->first();
+
+        // $pedido->estado = "En camino";
+        // $pedido->save();
+
+        return $codVenta;
     }
+
+
+    public function despachar($codVenta){
+
+
+        $idUserVenta = UsersVenta::where('codVenta', $codVenta)->first();
+
+        $pedidoParaDespachar = Pedido::where('id_UserVenta', $idUserVenta->id)->first();
+
+        $pedidoParaDespachar->estado = "En camino";
+        $pedidoParaDespachar->save();
+
+        return $this->index();
+    }
+
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        //Obtener id actual (vendedor)
+        $id_currentUser = Auth::id();
+
+        //Obtener el codigo de la venta aceptada
+
+
         $ventaAceptada = UsersVenta::find($id);
 
-        $ventaAceptada->estado = "aceptado";
-        $ventaAceptada->save();
+        if ($ventaAceptada) {
+            $ventaAceptada->estado = 'aceptado';
+            $ventaAceptada->save();
+
+            $nuevoPedido = new Pedido();
+            $nuevoPedido->id_UserVenta = $ventaAceptada->id;
+            $nuevoPedido->vendedor_id = $id_currentUser;
+            $nuevoPedido->estado = 'Solicitado';
+
+            $nuevoPedido->save();
+        }
 
         return back();
     }
@@ -56,17 +105,27 @@ class PedidoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $codVenta)
     {
         //
+        //Obtener id actual (vendedor)
+        $id_currentUser = Auth::id();
+
+        //Filtrar las ventas según su codigoVenta
+        $ventasPorCodVenta = Venta::where('codigoVenta', $codVenta)->get();
+
+        //Obtener todos los pedidos del usuario vendedor
+        $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
+
+        return view('repartidor.administrarPedidos', compact('ventasPorCodVenta','pedidos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update( string $codVenta)
     {
-        //
+        return $codVenta;
     }
 
     /**
@@ -76,4 +135,6 @@ class PedidoController extends Controller
     {
         //
     }
+
+
 }
