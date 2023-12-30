@@ -21,7 +21,6 @@ class PedidoController extends Controller
         //Obtener todos los pedidos del usuario vendedor
         $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
 
-        //Obtener las
         $ventasPorCodVenta = "";
 
         return view('repartidor.administrarPedidos', compact('pedidos', 'ventasPorCodVenta'));
@@ -134,6 +133,16 @@ class PedidoController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function pedidosEntregados(){
+
+        //Obtener id actual (vendedor)
+        $id_currentUser = Auth::id();
+
+        $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
+
+        return view('repartidor.pedidosEntregados', compact('pedidos'));
     }
 
 

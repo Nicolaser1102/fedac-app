@@ -74,7 +74,8 @@ Route::middleware([
      //  Ruta personalizada para despachar el pedido según su código de venta;
     Route::get('/pedidos/despachar/{codVenta}', [PedidoController::class, 'despachar'])->name('pedidos.despachar');
     //Ruta personalizada para visualizar la lista de pedidos
-    Route::get('/pedidos/pedidosEntregados', [PedidoController::class, 'pedidosEntregados'])->name('pedidos.pedidosEntregados');
+    Route::get('/pedidosEntregados', [PedidoController::class, 'pedidosEntregados'])->name('pedidos.pedidosEntregados');
+
 
 
 

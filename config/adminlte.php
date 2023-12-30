@@ -376,6 +376,13 @@ return [
             //Poner los permisos
 
         ],
+        [
+            'text' => 'Entregar pedidos',
+            'route'  => 'pedidos.pedidosEntregados',
+            'icon' => 'fas fa-fw fa-shopping-basket',
+            //Poner los permisos
+
+        ],
 
         ['header' => 'OPCIONES DE PERFIL'],
         [

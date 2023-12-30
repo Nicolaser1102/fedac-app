@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedido;
 use App\Models\Producto;
+use App\Models\UsersVenta;
 use App\Models\Venta;
 
 use Illuminate\Http\Request;
@@ -19,8 +21,16 @@ class VentaController extends Controller
     public function index()
     {
         //
+        //Obtener id actual (vendedor)
+        $id_currentUser = Auth::id();
+
         session()->forget('codVentaId');
-        return view('vendedor.listaVenta');
+
+        $ventasPorIdVendedor = UsersVenta::where('user_id', $id_currentUser)->get();
+
+        $ventasPorCodVenta = "";
+
+        return view('vendedor.listaVenta', compact( 'ventasPorIdVendedor','ventasPorCodVenta'));
     }
 
     /**
@@ -99,9 +109,19 @@ class VentaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $codVenta)
     {
         //
+        //
+        //Obtener id actual (vendedor)
+        $id_currentUser = Auth::id();
+
+        //Filtrar las ventas según su codigoVenta
+        $ventasPorCodVenta = Venta::where('codigoVenta', $codVenta)->get();
+
+        $ventasPorIdVendedor = UsersVenta::where('user_id', $id_currentUser)->get();
+
+        return view('vendedor.listaVenta', compact('ventasPorCodVenta','ventasPorIdVendedor'));
     }
 
     /**
