@@ -116,7 +116,7 @@ class PedidoController extends Controller
         //Obtener todos los pedidos del usuario vendedor
         $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
 
-        return view('repartidor.administrarPedidos', compact('ventasPorCodVenta','pedidos'));
+        return view('repartidor.administrarPedidos', compact('ventasPorCodVenta','pedidos','codVenta'));
     }
 
     /**

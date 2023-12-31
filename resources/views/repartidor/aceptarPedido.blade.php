@@ -53,7 +53,7 @@
                     @endforeach
                 </x-adminlte-datatable>
             @else
-            <h2>Vaya, parece que no hay ventas por aceptar...</h2>
+            <h2>Vaya, parece que no hay pedidos por aceptar...</h2>
 
             <div class="d-flex justify-content-between">
             <p class=".text-light-emphasis">

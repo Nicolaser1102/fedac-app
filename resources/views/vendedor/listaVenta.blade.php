@@ -9,6 +9,7 @@
 @section('content')
 
     <div class="d-flex flex-row">
+
         <div class="card col-6 mr-0 mr-1 p-4">
 
 
@@ -34,7 +35,7 @@
                                         <td>{{$venta->total}}</td>
                                         <td>{{$venta->estado}}</td>
                                         <td>
-                                            <a href="{{route('ventas.edit' , $venta->codVenta)}}" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Visualizar productos">
+                                            <a href="{{route('ventas.edit' , $venta->codVenta)}}" class="btn btn-xs btn-default text-teal mx-1 shadow float-right" title="Visualizar productos">
                                                 <i class="fa fa-lg fa-fw fa-eye"></i>
                                                 @php
                                                     $direccion = $venta->direccion;
@@ -53,6 +54,7 @@
 
 
         <div class="card col-6 mr-0 p-3">
+
             @if ($ventasPorCodVenta != "" && $codVenta != "")
                 <div class="card-header">
                     <p class="text-warning-emphasis">Lista de productos de la venta:
