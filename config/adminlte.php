@@ -312,75 +312,77 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'ADMININSTRACIÓN ROLES',
-        // 'can' => 'Administrar roles'
+        'can' => "Administrar-sistema"
     ],
         [
             'text'        => 'Roles',
             'route'         => 'roles.index',
             'icon'        => 'fas fa-fw fa-users',
-            // 'can' => "Administrar roles"
+            'can' => "Administrar-sistema"
 
         ],
         [
             'text'        => 'Permisos',
             'route'         => 'permisos.index',
             'icon'        => 'fas fa-fw fa-unlock',
-            // 'can' => "Administrar permisos"
+            'can' => "Administrar-sistema"
         ],
         [
             'text'        => 'Usuarios',
             'route'         => 'asignar.index',
             'icon'        => 'fas fa-fw fa-list-ul',
-            // 'can' => "Administrar usuarios"
+            'can' => "Administrar-sistema"
         ],
-        ['header' => 'PRODUCTOS'],
+        ['header' => 'PRODUCTOS',
+        'can' => "Administrar-sistema"],
         [
             'text' => 'Administrar Productos',
             'route'  => 'producto.index',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            // 'can' => "Administrar productos"
+            'can' => "Administrar-sistema"
         ],
         [
             'text' => 'Nuevo Producto',
             'route'  => 'producto.create',
             'icon' => 'fas fa-fw fa-plus-circle',
-            // 'can' => "Crear productos"
+            'can' => "Administrar-sistema"
         ],
-        ['header' => 'VENDEDOR'],
+        ['header' => 'VENDEDOR',
+        'can' => "Administrar ventas"],
         [
             'text' => 'Nueva venta',
             'route'  => 'ventas.create',
 
             'icon' => 'fas fa-fw fa-plus-circle',
-            //Poner los permisos
+            'can' => "Administrar ventas"
         ],
         [
             'text' => 'Lista de ventas',
             'route'  => 'ventas.index',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            //Poner los permisos
+            'can' => "Administrar ventas"
 
         ],
-        ['header' => 'REPARTIDOR'],
+        ['header' => 'REPARTIDOR',
+        'can' => "Administrar pedidos"],
         [
             'text' => 'Aceptar Pedidos',
             'route'  => 'pedidos.create',
-
             'icon' => 'fas fa-fw fa-plus-circle',
-            //Poner los permisos
+            'can' => "Administrar pedidos"
         ],
         [
             'text' => 'Administrar pedidos',
             'route'  => 'pedidos.index',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            //Poner los permisos
+            'can' => "Administrar pedidos"
 
         ],
         [
             'text' => 'Entregar pedidos',
             'route'  => 'pedidos.pedidosEntregados',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            //Poner los permisos
+            'can' => "Administrar pedidos"
 
         ],
 

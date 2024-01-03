@@ -145,5 +145,15 @@ class PedidoController extends Controller
         return view('repartidor.pedidosEntregados', compact('pedidos'));
     }
 
+    public function entregarPedidos($id){
+
+        $pedido = Pedido::find($id);
+        $pedido->estado = "Entregado";
+        $pedido->save();
+
+        return back();
+
+    }
+
 
 }

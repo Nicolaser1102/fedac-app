@@ -61,20 +61,16 @@ Route::middleware([
      Route::resource('/user_venta', UserVentaController::class)->names('users_ventas');
 
 
-
-    //  Ruta personalizada para despachar el pedido;
-    //  Route::get('/pedidos/despachar', 'PedidoController@create');
-
-
-
     //Ruta de recursos para controlar las vistas de Pedidos;
      Route::resource('/pedidos', PedidoController::class)->names('pedidos');
-
-
      //  Ruta personalizada para despachar el pedido según su código de venta;
     Route::get('/pedidos/despachar/{codVenta}', [PedidoController::class, 'despachar'])->name('pedidos.despachar');
     //Ruta personalizada para visualizar la lista de pedidos
     Route::get('/pedidosEntregados', [PedidoController::class, 'pedidosEntregados'])->name('pedidos.pedidosEntregados');
+    //Ruta personalizada para entregar los pedidos
+    Route::get('/pedidos/entregar/{codVenta}', [PedidoController::class, 'entregarPedidos'])->name('pedidos.entregarPedidos');
+
+
 
 
 
