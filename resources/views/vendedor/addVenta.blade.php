@@ -134,7 +134,7 @@
 
 
     {{-- Modal para registrar un nuevo registro en user_venta --}}
-<x-adminlte-modal id="modalPurple" title="Nuevo permiso" theme="purple"
+<x-adminlte-modal id="modalPurple" title="Datos de entrega" theme="purple"
 icon="fas fa-bolt" size='lg' disable-animations>
     <form action="{{route('users_ventas.store')}}" method="post">
         @csrf

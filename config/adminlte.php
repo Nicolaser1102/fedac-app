@@ -312,40 +312,35 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'ADMININSTRACIÓN ROLES',
-        'can' => "Administrar-sistema"
-    ],
+          'can' => "Administrar sistema"],
         [
             'text'        => 'Roles',
             'route'         => 'roles.index',
             'icon'        => 'fas fa-fw fa-users',
-            'can' => "Administrar-sistema"
-
-        ],
+            'can' => "Administrar sistema"],
         [
             'text'        => 'Permisos',
             'route'         => 'permisos.index',
             'icon'        => 'fas fa-fw fa-unlock',
-            'can' => "Administrar-sistema"
-        ],
+            'can' => "Administrar sistema"],
         [
             'text'        => 'Usuarios',
             'route'         => 'asignar.index',
             'icon'        => 'fas fa-fw fa-list-ul',
-            'can' => "Administrar-sistema"
-        ],
+            'can' => "Administrar sistema"],
         ['header' => 'PRODUCTOS',
-        'can' => "Administrar-sistema"],
+        'can' => "Administrar sistema"],
         [
             'text' => 'Administrar Productos',
             'route'  => 'producto.index',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            'can' => "Administrar-sistema"
+            'can' => "Administrar sistema"
         ],
         [
             'text' => 'Nuevo Producto',
             'route'  => 'producto.create',
             'icon' => 'fas fa-fw fa-plus-circle',
-            'can' => "Administrar-sistema"
+            'can' => "Administrar sistema"
         ],
         ['header' => 'VENDEDOR',
         'can' => "Administrar ventas"],
@@ -386,6 +381,32 @@ return [
 
         ],
 
+
+        ['header' => 'COMPRAR',
+        // 'can' => "Lista de productos"
+        ],
+        [
+            'text' => 'Lista de productos',
+            'route'  => 'comprar.index',
+            'icon' => 'fas fa-fw fa-plus-circle',
+            // 'can' => "Administrar pedidos"
+        ],
+        [
+            'text' => 'Carrito de compras',
+            'route'  => 'comprar.create',
+            'icon' => 'fas fa-fw fa-shopping-basket',
+            // 'can' => "Administrar pedidos"
+
+        ],
+
+        [
+            'text' => 'Lista de pedidos',
+            'route'  => 'comprar.infoPedidos',
+            'icon' => 'fas fa-fw fa-shopping-basket',
+            // 'can' => "Administrar pedidos"
+
+        ],
+
         ['header' => 'OPCIONES DE PERFIL'],
         [
             'text' => 'Perfil',
@@ -397,6 +418,7 @@ return [
             'url'  => 'changePassword',
             'icon' => 'fas fa-fw fa-lock',
         ],
+
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',

@@ -9,12 +9,11 @@
 
 @section('content')
 <p>Seleccione los pedidos a aceptar</p>
-
 <div class="d-flex flex-col">
 
     <div class="card col-12 mr-0 mr-1 p-4">
         <div class="card-body">
-            @if (is_null($ventasNoAceptadas))
+            @if (isset($ventasNoAceptadas))
                 @php
                 $heads = [
                     'Cod. Venta',

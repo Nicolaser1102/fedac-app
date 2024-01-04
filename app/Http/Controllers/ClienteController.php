@@ -6,40 +6,19 @@ use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\UsersVenta;
 use App\Models\Venta;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class VentaController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
     public function index()
     {
-        //
-        //Obtener id actual (vendedor)
-        $id_currentUser = Auth::id();
 
-        session()->forget('codVentaId');
-
-        $ventasPorIdVendedor = UsersVenta::where('user_id', $id_currentUser)->get();
-
-        $ventasPorCodVenta = "";
-        $codVenta = "";
-
-        return view('vendedor.listaVenta', compact( 'ventasPorIdVendedor','ventasPorCodVenta','codVenta'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //Id del usuario actual (vendedor)
+        //Id del usuario actual (cliente)
         $id = Auth::id();
 
 
@@ -48,20 +27,39 @@ class VentaController extends Controller
             $codVenta= session('codVentaId');
         } else {
             //Número de la venta aleatorio cada vez que se aplaste
-            $codVenta = 'Venta_'.Str::random(4);
+            $codVenta = 'Online_'.Str::random(3);
             session(['codVentaId' => $codVenta]);
             $codVenta= session('codVentaId');
         }
 
-        //Obtener las ventas según un código de venta
-        $productosCodigoVenta = Venta::where('codigoVenta', $codVenta)->get();
-
-
-
-
-        //Lista de productos disponibles para la venta
+        //Variable producto que recibe todos los registros de la tabla para presentarlo al cliente
         $productos = Producto::all();
-        return view('vendedor.addVenta', compact('id','codVenta' ,'productos','productosCodigoVenta'));
+
+        return view('cliente.comprar', compact('productos','codVenta'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+
+        if (session()->has('codVentaId')) {
+            $codVenta= session('codVentaId');
+        } else {
+            //Número de la venta aleatorio cada vez que se aplaste
+            $codVenta= "";
+        }
+
+        //Filtrar las ventas según su codigoVenta
+        $ventasPorCodVenta = Venta::where('codigoVenta', $codVenta)->get();
+
+        //Obtener id actual (cliente)
+        $id_currentUser = Auth::id();
+
+        return view('cliente.carrito', compact('codVenta','ventasPorCodVenta','id_currentUser'));
+
     }
 
     /**
@@ -69,7 +67,7 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
 
         //Se registra la nueva venta
         $venta = new Venta();
@@ -87,8 +85,20 @@ class VentaController extends Controller
         $producto->stock = $producto->stock-$cantProducto;
         $producto->save();
 
-        return back();
+        return $this->index();
+    }
 
+    public function infoPedidos(){
+
+        //Id del usuario actual (cliente)
+        $id_currentUser = Auth::id();
+
+        $pedidos = UsersVenta::where('user_id', $id_currentUser)->get();
+
+        $codVenta= "";
+        $ventasPorCodVenta = "";
+
+        return view('cliente.listaPedidos', compact('pedidos', 'codVenta', 'ventasPorCodVenta'));
     }
 
     /**
@@ -97,6 +107,10 @@ class VentaController extends Controller
     public function show(string $id)
     {
         //
+
+        $producto = Producto::find($id);
+
+        return view ('cliente.agregarProducto', compact('producto'));
     }
 
     /**
@@ -104,6 +118,7 @@ class VentaController extends Controller
      */
     public function edit(string $codVenta)
     {
+        //
 
         //Obtener id actual (vendedor)
         $id_currentUser = Auth::id();
@@ -111,9 +126,9 @@ class VentaController extends Controller
         //Filtrar las ventas según su codigoVenta
         $ventasPorCodVenta = Venta::where('codigoVenta', $codVenta)->get();
 
-        $ventasPorIdVendedor = UsersVenta::where('user_id', $id_currentUser)->get();
+        $pedidos = UsersVenta::where('user_id', $id_currentUser)->get();
 
-        return view('vendedor.listaVenta', compact('ventasPorCodVenta','ventasPorIdVendedor','codVenta'));
+        return view('cliente.listaPedidos', compact('ventasPorCodVenta','pedidos','codVenta'));
     }
 
     /**
@@ -130,13 +145,5 @@ class VentaController extends Controller
     public function destroy(string $id)
     {
         //
-        $venta = Venta::find($id);
-
-        $venta->delete();
-        return back();
-    }
-
-    public function nuevaVenta(){
-        return "Estoy en la nueva venta";
     }
 }

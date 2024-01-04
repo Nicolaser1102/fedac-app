@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AsignarController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
@@ -59,6 +60,7 @@ Route::middleware([
 
      //Ruta de recursos para controlar la vista de la tabla user_venta;
      Route::resource('/user_venta', UserVentaController::class)->names('users_ventas');
+     Route::post('/guardarVentaOnline', [UserVentaController::class, 'guardarVentaOnline'])->name('users_ventas.guardarVentaOnline');
 
 
     //Ruta de recursos para controlar las vistas de Pedidos;
@@ -69,6 +71,11 @@ Route::middleware([
     Route::get('/pedidosEntregados', [PedidoController::class, 'pedidosEntregados'])->name('pedidos.pedidosEntregados');
     //Ruta personalizada para entregar los pedidos
     Route::get('/pedidos/entregar/{codVenta}', [PedidoController::class, 'entregarPedidos'])->name('pedidos.entregarPedidos');
+
+
+    //Ruta de recursos para controlar la vista que tendrá el usuario para realizar las compras en línea
+    Route::resource('/comprar', ClienteController::class)->names('comprar');
+    Route::get('/infoPedidos', [ClienteController::class, 'infoPedidos'])->name('comprar.infoPedidos');
 
 
 

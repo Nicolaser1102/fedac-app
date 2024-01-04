@@ -35,7 +35,7 @@ return new class extends Migration
             $table->double('total',5,2);
             $table->string('direccion');
             $table->string('numTelefono');
-            $table->enum('estado', ['porAceptar', 'aceptado']);
+            $table->enum('estado', ['porAceptar', 'aceptado','Entregado']);
 
             $table->timestamps();
         });
