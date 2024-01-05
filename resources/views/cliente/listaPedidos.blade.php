@@ -35,10 +35,6 @@
                                     <td>{{$pedido->codVenta}}</td>
                                     <td>
 
-                                    @php
-                                        //Obtener todos los pedidos del usuario vendedor
-                                        $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
-                                    @endphp
 
                                     @if ($pedido->estado == 'porAceptar')
                                     <strong>Solicitado</strong>

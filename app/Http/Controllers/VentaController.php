@@ -132,7 +132,16 @@ class VentaController extends Controller
         //
         $venta = Venta::find($id);
 
+
+        $producto = Producto::where('id', $venta->id_producto)->first();
+        $producto->stock = ($producto->stock)+($venta->cant_Producto);
+        $producto->save();
+
         $venta->delete();
+
+
+
+
         return back();
     }
 

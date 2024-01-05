@@ -151,6 +151,11 @@ class PedidoController extends Controller
         $pedido->estado = "Entregado";
         $pedido->save();
 
+        $userVentaPedido = UsersVenta::where('id', $pedido->id_UserVenta)->first();
+        $userVentaPedido->estado = "Entregado";
+        $userVentaPedido->save();
+
+
         return back();
 
     }

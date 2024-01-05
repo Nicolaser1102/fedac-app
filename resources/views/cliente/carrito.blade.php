@@ -13,11 +13,14 @@
 @php
     $cont = 0;
     $valorTotal = 0;
+    $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                    <i class="fa fa-lg fa-fw fa-trash"></i>
+                </button>';
 @endphp
 
 <div class="card col-6 mr-0 p-3">
 
-    @if ($ventasPorCodVenta != "" && $codVenta != ""  && isset($ventasPorCodVenta) == false)
+    @if ($ventasPorCodVenta != "" && $codVenta != "" )
         <div class="card-header">
             <p class="text-warning-emphasis">Lista de productos de la venta:
             <strong> {{$codVenta}} </strong></p>
@@ -30,6 +33,7 @@
                     <th scope="col">Nombre Prod.</th>
                     <th scope="col">Cant</th>
                     <th scope="col">Precio</th>
+                    <th scope="col">Accción</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,6 +47,13 @@
                         <td>{{$productoCodigoVenta->productos->nombreProd}}</td>
                         <td>{{$productoCodigoVenta->cant_Producto}}</td>
                         <td>$ {{($productoCodigoVenta->cant_Producto)*$productoCodigoVenta->productos->precioProd}}</td>
+                        <td>
+                            <form style="display: inline" action="{{route('ventas.destroy', $productoCodigoVenta)}}" method="post" class="formEliminarProducto">
+                                @csrf
+                                @method('delete')
+                                {!!$btnDelete!!}
+                            </form>
+                        </td>
 
                                 {{-- Sumatorio del valor total --}}
                                 @php
@@ -89,29 +100,29 @@
 
             <div class="row">
                 <x-adminlte-input name="direccion" label="Dirección de entrega" placeholder="Aquí su dirección..."
-                fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+                fgroup-class="col-md-6" ></x-adminlte-input>
             </div>
             <div class="row">
                 <x-adminlte-input name="numTelefono" label="Número de teléfono" placeholder="Aquí el número de teléfono de contacto..."
-                fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+                fgroup-class="col-md-6" ></x-adminlte-input>
             </div>
 
             {{-- Campos escondidos para valor Total y el estado, e incluido el user_id + codVenta --}}
             <div class="row">
                 <x-adminlte-input type="hidden" name="total" label="" value="{{$valorTotal}}"
-                fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+                fgroup-class="col-md-6" ></x-adminlte-input>
             </div>
             <div class="row">
                 <x-adminlte-input type="hidden" name="estado" label="" value="porAceptar" placeholder="Aquí el permiso..."
-                fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+                fgroup-class="col-md-6" ></x-adminlte-input>
             </div>
             <div class="row">
                 <x-adminlte-input type="hidden" name="user_id" label="" value="{{$id_currentUser}}" placeholder="Aquí el permiso..."
-                fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+                fgroup-class="col-md-6" ></x-adminlte-input>
             </div>
             <div class="row">
                 <x-adminlte-input type="hidden" name="codVenta" label="" value="{{$codVenta}}" placeholder="Aquí el permiso..."
-                fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+                fgroup-class="col-md-6" ></x-adminlte-input>
             </div>
 
             <x-adminlte-button type="submit" label="Guardar" theme="outline-danger" icon="fas fa-key"></x-adminlte-button>

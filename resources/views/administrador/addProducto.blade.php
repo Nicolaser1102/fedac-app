@@ -32,6 +32,11 @@
                             <i class="fa fa-lemon text-lightblue"></i>
                         </div>
                     </x-slot>
+                    <x-slot name="bottomSlot">
+                        <span class="text-sm text-gray">
+                            Ejm: Limón
+                        </span>
+                    </x-slot>
                 </x-adminlte-input>
 
 
@@ -53,8 +58,15 @@
             <div class="row">
 
             {{-- Input de descripcion del producto --}}
-            <x-adminlte-input name="descripcionProd" label="Descripción del producto" placeholder=""
-                    fgroup-class="col-md-12" disable-feedback value="{{old('descripcionProd')}}"></x-adminlte-input>
+            <x-adminlte-input name="descripcionProd" label="Descripción del producto"
+                    fgroup-class="col-md-12"  value="{{old('descripcionProd')}}">
+
+                    <x-slot name="bottomSlot">
+                        <span class="text-sm text-gray">
+                            Escribe las características del producto
+                        </span>
+                    </x-slot>
+            </x-adminlte-input>
 
 
             </div>
@@ -65,8 +77,13 @@
                 <x-adminlte-input name="precioProd" label="Precio del producto" placeholder="" label-class="text-danger"  fgroup-class="col-md-4" value="{{old('precioProd')}}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
-                            <i class="fa fa-usd text-danger"></i>
+                            <i class="fas fa-usd text-danger">$</i>
                         </div>
+                    </x-slot>
+                    <x-slot name="bottomSlot">
+                        <span class="text-sm text-gray">
+                            Ejem: 4.50
+                        </span>
                     </x-slot>
                 </x-adminlte-input>
 
@@ -80,7 +97,7 @@
                     </x-slot>
                     <x-slot name="bottomSlot">
                         <span class="text-sm text-gray">
-                            [Formato: "2022-24-11"]
+                            [Formato: "2022-12-24"]
                         </span>
                     </x-slot>
                 </x-adminlte-input>
@@ -95,6 +112,11 @@
                         <i class="fas fa-hashtag"></i>
                     </div>
                 </x-slot>
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">
+                        Ejm: 3
+                    </span>
+                </x-slot>
             </x-adminlte-input>
 
             </div>
@@ -102,8 +124,15 @@
             {{-- Input url de la imagen del producto --}}
             <div class="row">
                     <x-adminlte-input name="imagenUrlProd" label="URL de la imagen del producto" placeholder=""
-                        fgroup-class="col-md-10" value="{{old('imagenUrlProd')}}" disable-feedback/>
-            </div>
+                        fgroup-class="col-md-10" value="{{old('imagenUrlProd')}}" >
+                        <x-slot name="bottomSlot">
+                            <span class="text-sm text-gray">
+                                Escribe la URL de la imagen del producto
+                            </span>
+                        </x-slot>
+                    </x-adminlte-input>
+
+                    </div>
 
                     <x-adminlte-button class="btn btn-success btn-sm" type="submit" label="Guardar" theme="success" icon="fas fa-lg fa-save" />
 
@@ -119,18 +148,22 @@
 @stop
 
 @section('js')
-<script>
-    // Script para presentar la alerta de javascript
-    $(document).ready(function(){
-        $('.formAgregarProducto').submit(function(e){
+
+
+    @if (session("message"))
+        <script>
+            $(document).ready(function(){
+
             Swal.fire({
                     title: "Guardado!",
-                    text: "El producto ha sido guardado correctamente.",
+                    text: "El producto ha sido editado correctamente.",
                     icon: "success"
                     });
-        })
+
     })
-</script>
+        </script>
+    @endif
+
 @stop
 
 

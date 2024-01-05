@@ -33,6 +33,11 @@
                             <i class="fa fa-lemon text-lightblue"></i>
                         </div>
                     </x-slot>
+                    <x-slot name="bottomSlot">
+                        <span class="text-sm text-gray">
+                            Ejm: Limón
+                        </span>
+                    </x-slot>
                 </x-adminlte-input>
 
 
@@ -55,7 +60,13 @@
 
             {{-- Input de descripcion del producto --}}
             <x-adminlte-input name="descripcionProd" label="Descripción del producto" placeholder=""
-                    fgroup-class="col-md-12" disable-feedback value="{{$producto->descripcionProd}}"></x-adminlte-input>
+                    fgroup-class="col-md-12" value="{{$producto->descripcionProd}}">
+                    <x-slot name="bottomSlot">
+                        <span class="text-sm text-gray">
+                            Escribe las características del producto
+                        </span>
+                    </x-slot>
+            </x-adminlte-input>
 
 
             </div>
@@ -69,6 +80,11 @@
                             <i class="fa fa-usd text-danger"></i>
                         </div>
                     </x-slot>
+                    <x-slot name="bottomSlot">
+                        <span class="text-sm text-gray">
+                            Ejem: 4.50
+                        </span>
+                    </x-slot>
                 </x-adminlte-input>
 
                 {{-- Input de la fecha de Vencimento del producto --}}
@@ -81,7 +97,7 @@
                     </x-slot>
                     <x-slot name="bottomSlot">
                         <span class="text-sm text-gray">
-                            [Formato: "2022-24-11"]
+                            [Formato: "2022-11-24"]
                         </span>
                     </x-slot>
                 </x-adminlte-input>
@@ -90,11 +106,16 @@
                 {{-- Input del stock del producto --}}
 
                 <x-adminlte-input name="stock" label="Stock del Producto" placeholder="" type="number"
-                igroup-size="sm" min=1 max=10 fgroup-class="col-md-4" value="{{$producto->stock}}">
+                igroup-size="sm" min=1 max=500 fgroup-class="col-md-4" value="{{$producto->stock}}">
                 <x-slot name="appendSlot">
                     <div class="input-group-text bg-dark">
                         <i class="fas fa-hashtag"></i>
                     </div>
+                </x-slot>
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">
+                        Ejm: 3
+                    </span>
                 </x-slot>
             </x-adminlte-input>
 
@@ -103,7 +124,13 @@
             {{-- Input url de la imagen del producto --}}
             <div class="row">
                     <x-adminlte-input name="imagenUrlProd" label="URL de la imagen del producto" placeholder=""
-                        fgroup-class="col-md-10" value="{{$producto->imagenUrlProd}}" disable-feedback/>
+                        fgroup-class="col-md-10" value="{{$producto->imagenUrlProd}}">
+                        <x-slot name="bottomSlot">
+                            <span class="text-sm text-gray">
+                                Escribe la URL de la imagen del producto
+                            </span>
+                        </x-slot>
+                    </x-adminlte-input>
             </div>
 
                     <x-adminlte-button class="btn btn-success btn-sm" type="submit" label="Editar" theme="success" icon="fas fa-lg fa-save" />
@@ -121,7 +148,7 @@
 
 @section('js')
 
-    // Script para presentar la alerta de javascript
+
     @if (session("message"))
         <script>
             $(document).ready(function(){

@@ -55,10 +55,10 @@ class ProductoController extends Controller
             'nombreProd' =>'required|max:100',
             'codigoBarras' => 'required|numeric|max:10000000000|unique:productos,codigoBarras',
             'descripcionProd' => 'required|max:500',
-            'precioProd' => 'required|numeric',
+            'precioProd' => 'required|numeric|max:10',
             'fechaVencProd' => 'required|date',
             'stock' => 'required|numeric',
-            'imagenUrlProd' => 'required'
+            'imagenUrlProd' => 'required|min:10'
         ]);
 
         $producto = new ModelsProducto();
@@ -102,6 +102,18 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        //Realizar validaciones a la request
+        $validacion = $request-> validate([
+            'nombreProd' =>'required|max:100',
+            'codigoBarras' => 'required|numeric|max:10000000000',
+            'descripcionProd' => 'required|max:500',
+            'precioProd' => 'required|numeric|max:9.99',
+            'fechaVencProd' => 'required|date',
+            'stock' => 'required|numeric',
+            'imagenUrlProd' => 'required|min:10'
+        ]);
+
         $producto = ModelsProducto::find($id);
 
         $producto->nombreProd = $request->input('nombreProd');

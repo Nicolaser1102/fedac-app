@@ -13,15 +13,13 @@
         <div class="card-body">
 
             @php
-                $heads = ['Código Barras', 'Nombre', 'Descripción', 'Precio', ['label' => 'Fecha de Vencimiento', 'width' => 20], 'Stock' ,['label' => 'Actions', 'no-export' => true, 'width' => 15]];
+                $heads = ['Código Barras', 'Nombre', 'Descripción', 'Precio', ['label' => 'Fecha de Vencimiento', 'width' => 20], 'Stock' ,['label' => 'Acciones', 'no-export' => true, 'width' => 15]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                   <i class="fa fa-lg fa-fw fa-trash"></i>
               </button>';
-                $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                   <i class="fa fa-lg fa-fw fa-eye"></i>
-               </button>';
+
 
                 $config = [
                     'language'=> [
@@ -51,7 +49,7 @@
                                 </form>
 
 
-                            {!!$btnDetails!!}</td>
+                        </td>
 
                     </tr>
                 @endforeach

@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/logo-FEDAC.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -312,24 +312,27 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'ADMININSTRACIÓN ROLES',
-          'can' => "Administrar sistema"],
+          'can' => "Administrar sistema" ],
         [
             'text'        => 'Roles',
             'route'         => 'roles.index',
             'icon'        => 'fas fa-fw fa-users',
-            'can' => "Administrar sistema"],
+             'can' => "Administrar sistema"
+        ],
         [
             'text'        => 'Permisos',
             'route'         => 'permisos.index',
             'icon'        => 'fas fa-fw fa-unlock',
-            'can' => "Administrar sistema"],
+            'can' => "Administrar sistema"
+        ],
         [
             'text'        => 'Usuarios',
             'route'         => 'asignar.index',
             'icon'        => 'fas fa-fw fa-list-ul',
             'can' => "Administrar sistema"],
         ['header' => 'PRODUCTOS',
-        'can' => "Administrar sistema"],
+          'can' => "Administrar sistema"
+    ],
         [
             'text' => 'Administrar Productos',
             'route'  => 'producto.index',
@@ -340,7 +343,7 @@ return [
             'text' => 'Nuevo Producto',
             'route'  => 'producto.create',
             'icon' => 'fas fa-fw fa-plus-circle',
-            'can' => "Administrar sistema"
+             'can' => "Administrar sistema"
         ],
         ['header' => 'VENDEDOR',
         'can' => "Administrar ventas"],
@@ -383,19 +386,19 @@ return [
 
 
         ['header' => 'COMPRAR',
-        // 'can' => "Lista de productos"
+          'can' => "Comprar online"
         ],
         [
             'text' => 'Lista de productos',
             'route'  => 'comprar.index',
             'icon' => 'fas fa-fw fa-plus-circle',
-            // 'can' => "Administrar pedidos"
+            'can' => "Comprar online"
         ],
         [
             'text' => 'Carrito de compras',
             'route'  => 'comprar.create',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            // 'can' => "Administrar pedidos"
+             'can' => "Comprar online"
 
         ],
 
@@ -403,7 +406,7 @@ return [
             'text' => 'Lista de pedidos',
             'route'  => 'comprar.infoPedidos',
             'icon' => 'fas fa-fw fa-shopping-basket',
-            // 'can' => "Administrar pedidos"
+            'can' => "Comprar online"
 
         ],
 
