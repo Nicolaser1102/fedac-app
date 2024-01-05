@@ -357,7 +357,7 @@ return [
         [
             'text' => 'Lista de ventas',
             'route'  => 'ventas.index',
-            'icon' => 'fas fa-fw fa-shopping-basket',
+            'icon' => 'fas fa-fw fa-list-ol',
             'can' => "Administrar ventas"
 
         ],
@@ -372,14 +372,14 @@ return [
         [
             'text' => 'Administrar pedidos',
             'route'  => 'pedidos.index',
-            'icon' => 'fas fa-fw fa-shopping-basket',
+            'icon' => 'fas fa-fw fa-check-square',
             'can' => "Administrar pedidos"
 
         ],
         [
             'text' => 'Entregar pedidos',
             'route'  => 'pedidos.pedidosEntregados',
-            'icon' => 'fas fa-fw fa-shopping-basket',
+            'icon' => 'fas fa-fw fa-truck',
             'can' => "Administrar pedidos"
 
         ],
@@ -391,21 +391,21 @@ return [
         [
             'text' => 'Lista de productos',
             'route'  => 'comprar.index',
-            'icon' => 'fas fa-fw fa-plus-circle',
+            'icon' => 'fas fa-fw fa-shopping-basket',
             'can' => "Comprar online"
         ],
         [
             'text' => 'Carrito de compras',
             'route'  => 'comprar.create',
-            'icon' => 'fas fa-fw fa-shopping-basket',
+            'icon' => 'fas fa-fw fa-shopping-cart',
              'can' => "Comprar online"
 
         ],
 
         [
-            'text' => 'Lista de pedidos',
+            'text' => 'Historial de Pedidos',
             'route'  => 'comprar.infoPedidos',
-            'icon' => 'fas fa-fw fa-shopping-basket',
+            'icon' => 'fas fa-fw fa-truck',
             'can' => "Comprar online"
 
         ],
