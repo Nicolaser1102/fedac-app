@@ -57,7 +57,7 @@ class UserVentaController extends Controller
 
          session()->forget('codVentaId');
 
-        return view('vendedor.listaVenta', compact('ventasPorCodVenta','ventasPorIdVendedor','codVenta'));
+        return view('vendedor.listaVenta', compact('ventasPorCodVenta','ventasPorIdVendedor','codVenta'))->with('message','CompraAgregadaCorrectamente');
     }
 
     public function guardarVentaOnline(Request $request){

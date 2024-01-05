@@ -98,7 +98,7 @@ class PedidoController extends Controller
             $nuevoPedido->save();
         }
 
-        return back();
+        return back()->with('message','PedidoAceptado');
     }
 
     /**

@@ -9,11 +9,13 @@
 
 @section('content')
 <p>Seleccione los pedidos a aceptar</p>
+
+
 <div class="d-flex flex-col">
 
     <div class="card col-12 mr-0 mr-1 p-4">
         <div class="card-body">
-            @if (isset($ventasNoAceptadas))
+            @if (sizeof($ventasNoAceptadas) > 0)
                 @php
                 $heads = [
                     'Cod. Venta',
@@ -32,6 +34,12 @@
                 $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                                 <i class="fa fa-lg fa-fw fa-eye"></i>
                             </button>';
+
+                            $config = [
+                    'language'=> [
+                        'url' => '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
+                    ]
+                ];
                 @endphp
 
                 {{-- Minimal example / fill data using the component slot --}}
@@ -71,5 +79,17 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+@if (session("message"))
+<script>
+    $(document).ready(function(){
+
+    Swal.fire({
+            title: "Guardado!",
+            text: "El pedido ha sido aceptado",
+            icon: "success"
+            });
+
+})
+</script>
+@endif
 @stop

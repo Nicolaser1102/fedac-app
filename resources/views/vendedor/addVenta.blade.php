@@ -45,6 +45,10 @@
                 {{-- TABLA QUE MUESTRAN TODOS LOS PRODUCTOS --}}
                 <x-adminlte-datatable id="tablaProductos" :heads="$heads" :config="$config">
                     @foreach ($productos as $producto)
+
+                        @if ($producto->stock >0)
+
+
                         <tr>
 
                             <td>{{$producto->codigoBarras}}</td>
@@ -77,6 +81,7 @@
                             </td>
 
                         </tr>
+                        @endif
                     @endforeach
                 </x-adminlte-datatable>
 
@@ -135,8 +140,8 @@
 
     {{-- Modal para registrar un nuevo registro en user_venta --}}
 <x-adminlte-modal id="modalPurple" title="Datos de entrega" theme="purple"
-icon="fas fa-bolt" size='lg' disable-animations>
-    <form action="{{route('users_ventas.store')}}" method="post">
+icon="fas fa-truck" size='lg' disable-animations>
+    <form action="{{route('users_ventas.store')}}" method="post" class="eliminarVenta">
         @csrf
 
         <div class="row">
@@ -179,8 +184,23 @@ icon="fas fa-bolt" size='lg' disable-animations>
 @stop
 
 @section('js')
-    <script> console.log('Hi!');
 
-    </script>
+<script>
+    $(document).ready(function(){
+        $('.eliminarVenta').submit(function(e){
+                e.preventDefault();
+
+                this.submit();
+
+    Swal.fire({
+            title: "Guardado!",
+            text: "La venta ha sido registrada correctamente",
+            icon: "success"
+            });
+
+})
+})
+</script>
+
 
 @stop

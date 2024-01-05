@@ -16,6 +16,8 @@
         @foreach($productos->chunk(4) as $chunk)
             <div class="card-group">
                 @foreach($chunk as $producto)
+                    @if ($producto->stock > 0)
+
 
                     <div class="card mr-1 mb-2" style="width: 18rem;">
                         <img src="{{$producto->imagenUrlProd}}" class="card-img-top" alt="..." width="100px" height="200px">
@@ -34,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endif
                 @endforeach
             </div>
         @endforeach
