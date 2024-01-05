@@ -1,4 +1,11 @@
-<x-form-section submit="updateProfileInformation">
+
+
+<div class="card p-2">
+
+<x-form-section class="p-0 " submit="updateProfileInformation">
+
+
+
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
@@ -12,7 +19,7 @@
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
-                <input type="file" id="photo" class="hidden"
+                <input type="file" id="photo" class="form-control p-1 hidden"
                             wire:model.live="photo"
                             x-ref="photo"
                             x-on:change="
@@ -88,8 +95,11 @@
             {{ __('Saved.') }}
         </x-action-message>
 
-        <x-button wire:loading.attr="disabled" wire:target="photo">
+        <x-button class="btn btn-primary" wire:loading.attr="disabled" wire:target="photo">
             {{ __('Save') }}
         </x-button>
     </x-slot>
 </x-form-section>
+
+</div>
+

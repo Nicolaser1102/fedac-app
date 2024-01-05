@@ -1,3 +1,6 @@
+
+<div class="card p-2">
+
 <x-action-section>
     <x-slot name="title">
         {{ __('Browser Sessions') }}
@@ -52,7 +55,7 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-button wire:click="confirmLogout" wire:loading.attr="disabled">
+            <x-button wire:click="confirmLogout" class="btn btn-dark" wire:loading.attr="disabled">
                 {{ __('Log Out Other Browser Sessions') }}
             </x-button>
 
@@ -87,7 +90,7 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-button class="ms-3"
+                <x-button class="ms-3 btn btn-warning "
                             wire:click="logoutOtherBrowserSessions"
                             wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
@@ -96,3 +99,6 @@
         </x-dialog-modal>
     </x-slot>
 </x-action-section>
+
+
+</div>

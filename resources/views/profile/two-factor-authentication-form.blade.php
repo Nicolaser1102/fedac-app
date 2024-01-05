@@ -1,3 +1,5 @@
+<div class="card pb-2">
+
 <x-action-section>
     <x-slot name="title">
         {{ __('Two Factor Authentication') }}
@@ -7,7 +9,7 @@
         {{ __('Add additional security to your account using two factor authentication.') }}
     </x-slot>
 
-    <x-slot name="content">
+    <x-slot name="content" class="pb-2">
         <h3 class="text-lg font-medium text-gray-900">
             @if ($this->enabled)
                 @if ($showingConfirmation)
@@ -79,28 +81,28 @@
         <div class="mt-5">
             @if (! $this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
-                    <x-button type="button" wire:loading.attr="disabled">
+                    <x-button class="btn btn-dark" type="button" wire:loading.attr="disabled">
                         {{ __('Enable') }}
                     </x-button>
                 </x-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
                     <x-confirms-password wire:then="regenerateRecoveryCodes">
-                        <x-secondary-button class="me-3">
+                        <x-button class="me-3 btn btn-dark">
                             {{ __('Regenerate Recovery Codes') }}
-                        </x-secondary-button>
+                        </x-button>
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
                     <x-confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-button type="button" class="me-3" wire:loading.attr="disabled">
+                        <x-button type="button" class="btn btn-primary text-dark bg-white" style="color: black" wire:loading.attr="disabled">
                             {{ __('Confirm') }}
                         </x-button>
                     </x-confirms-password>
                 @else
-                    <x-confirms-password wire:then="showRecoveryCodes">
-                        <x-secondary-button class="me-3">
+                    <x-confirms-password  wire:then="showRecoveryCodes" class="btn btn-light">
+                        <x-button class="me-3 btn btn-dark ">
                             {{ __('Show Recovery Codes') }}
-                        </x-secondary-button>
+                        </x-button>
                     </x-confirms-password>
                 @endif
 
@@ -112,7 +114,7 @@
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-danger-button wire:loading.attr="disabled">
+                        <x-danger-button class="btn btn-danger" wire:loading.attr="disabled">
                             {{ __('Disable') }}
                         </x-danger-button>
                     </x-confirms-password>
@@ -122,3 +124,4 @@
         </div>
     </x-slot>
 </x-action-section>
+</div>

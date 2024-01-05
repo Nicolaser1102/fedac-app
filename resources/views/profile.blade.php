@@ -3,10 +3,13 @@
 @section('title', 'Perfil')
 
 @section('content_header')
-    <h1>Perfil</h1>
+    <h1 class="ml-2">Perfil</h1>
 @stop
 
 @section('content')
+
+<div class="card">
+    <div class="card-body">
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -46,6 +49,8 @@
     </div>
 
 
+    </div>
+</div>
 @stop
 
 @section('css')
