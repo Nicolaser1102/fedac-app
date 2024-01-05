@@ -95,7 +95,7 @@
     {{-- Modal para registrar un nuevo registro en user_venta --}}
     <x-adminlte-modal id="modalPurple" title="Datos de entrega" theme="purple"
     icon="fas fa-truck" size='lg' disable-animations>
-        <form action="{{route('users_ventas.guardarVentaOnline')}}" method="post">
+        <form action="{{route('users_ventas.guardarVentaOnline')}}" method="post" class="formAgregarVenta">
             @csrf
 
             <div class="row">
@@ -137,5 +137,22 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+
+    $(document).ready(function(){
+        $('.formAgregarVenta').submit(function(e){
+                e.preventDefault();
+
+                this.submit();
+
+    Swal.fire({
+            title: "Guardado!",
+            text: "El pedido ha sido solicitado correctamente",
+            icon: "success"
+            });
+
+})
+})
+
+    </script>
 @stop

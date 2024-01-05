@@ -69,7 +69,7 @@ class PedidoController extends Controller
         $pedidoParaDespachar->estado = "En camino";
         $pedidoParaDespachar->save();
 
-        return $this->index();
+        return $this->index()->with('message','PedidoDespachado');
     }
 
 

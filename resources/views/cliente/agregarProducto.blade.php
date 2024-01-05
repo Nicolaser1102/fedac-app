@@ -67,5 +67,21 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+
+    $(document).ready(function(){
+        $('.formAgregarVenta').submit(function(e){
+                e.preventDefault();
+
+                this.submit();
+
+    Swal.fire({
+            title: "Guardado!",
+            text: "Producto agregado al carrito",
+            icon: "success"
+            });
+
+})
+})
+    </script>
 @stop

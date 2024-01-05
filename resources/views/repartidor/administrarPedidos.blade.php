@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p>Aquí se podrán administrar todos los pedidos</p>
+    <p>Pedidos para despachar</p>
 
     <div class="d-flex flex-row">
 
@@ -98,7 +98,7 @@
 
 
                 <hr>
-                <button class="btn btn-danger float-right mt-3" onclick="location.href = '{{ route('pedidos.despachar', $productoCodigoVenta->codigoVenta) }}'" id="btnDespachar" disabled>Despachar</button>
+                <button class="btn btn-danger float-right mt-3" onclick="location.href = '{{ route('pedidos.despachar', $productoCodigoVenta->codigoVenta) }}';" id="btnDespachar" disabled>Despachar</button>
             </div>
             @else
                 <div class="card-body">
@@ -144,5 +144,21 @@
         }
     }
 
-    </script>
+
+</script>
+
+@if (session("message"))
+        <script>
+            $(document).ready(function(){
+
+            Swal.fire({
+                    title: "Guardado!",
+                    text: "El producto ha sido editado correctamente.",
+                    icon: "success"
+                    });
+
+    })
+        </script>
+    @endif
+
 @stop
