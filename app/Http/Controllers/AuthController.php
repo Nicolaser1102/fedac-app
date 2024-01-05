@@ -47,66 +47,29 @@ class AuthController extends Controller
 
          public function dashboard(){
 
-            // $id_currentUser = Auth::id();
-            // $user = User::find($id_currentUser);
-
-            // $roles = Role::all();
-
-            // $rolEncontrado = "";
-
-            // foreach ($roles as $rol) {
-            //     if($rol->name == $user->rol){
-            //         $rolEncontrado = $rol->name;
-            //     }
-            // }
+            $id_currentUser = Auth::id();
+            $user = User::find($id_currentUser);
 
 
-            // if ($rolEncontrado == "Administrador") {
-            //     return redirect()->route('producto.index');
-            // }elseif ($rolEncontrado == "Repartidor") {
-            //     $id_currentUser = Auth::id();
-            //     $pedidos = Pedido::where('vendedor_id', $id_currentUser)->get();
-            //     $ventasPorCodVenta = "";
-            //     return view('repartidor.administrarPedidos', compact('pedidos', 'ventasPorCodVenta'));
-            // } elseif ($rolEncontrado == "Vendedor"){
-            //     $id = Auth::id();
-            //     if (session()->has('codVentaId')) {
-            //         $codVenta= session('codVentaId');
-            //     } else {
-            //         $codVenta = 'Venta_'.Str::random(4);
-            //         session(['codVentaId' => $codVenta]);
-            //         $codVenta= session('codVentaId');
-            //     }
-            //     $productosCodigoVenta = Venta::where('codigoVenta', $codVenta)->get();
-            //     $productos = Producto::all();
-            //     return view('vendedor.addVenta', compact('id','codVenta' ,'productos','productosCodigoVenta'));
-            // } elseif($rolEncontrado == "Cliente"){
-            //     $id = Auth::id();
-            //     if (session()->has('codVentaId')) {
-            //         $codVenta= session('codVentaId');
-            //     } else {
-            //         $codVenta = 'Online_'.Str::random(3);
-            //         session(['codVentaId' => $codVenta]);
-            //         $codVenta= session('codVentaId');
-            //     }
-            //     $productos = Producto::all();
-            //     return view('cliente.comprar', compact('productos','codVenta'));
-            // }else{
-            //     $id = Auth::id();
-            //     if (session()->has('codVentaId')) {
-            //         $codVenta= session('codVentaId');
-            //     } else {
-            //         $codVenta = 'Online_'.Str::random(3);
-            //         session(['codVentaId' => $codVenta]);
-            //         $codVenta= session('codVentaId');
-            //     }
-            //     $productos = Producto::all();
-            //     return view('cliente.comprar', compact('productos','codVenta'));
+
+
+            if ($user->rol == "Administrador") {
+                return redirect()->route('producto.index');
+             }
+            elseif ($user->rol == "Repartidor") {
+                return redirect()->route('pedidos.create');
+            } elseif ($user->rol == "Vendedor"){
+                return redirect()->route('ventas.create');
+
+            } elseif($user->rol == "Cliente"){
+
+                $user->roles()->sync(4);
+                return redirect()->route('comprar.index');
+            }else{
+                return redirect()->route('comprar.index');
             }
 
-
-
-            // }
+             }
          }
 
 

@@ -65,8 +65,30 @@ class AsignarController extends Controller
         //
         $user = User::find($id);
 
+        //vendedor 2
+        //repartidor 3
+
         $user->roles()->sync($request->roles);
+        //Cambiar el rol del modelo usuario
+        if ($request->roles[0] == 1) {
+            $user->rol = 'Administrador';
+        }elseif ($request->roles[0] == 2) {
+            $user->rol = 'Vendedor';
+        }elseif ($request->roles[0] == 3) {
+            $user->rol = 'Repartidor';
+        }elseif ($request->roles[0] == 4) {
+            $user->rol = 'Cliente';
+        }else{
+            $user->rol = 'Cliente';
+        }
+
+
+
+        $user->save();
+
         return redirect()->route('asignar.edit', $user);
+
+
     }
 
     /**
