@@ -1,0 +1,101 @@
+[33mcommit 927f5fd325876a921455295ceb0cf06735852aea[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Wed Jan 3 20:04:20 2024 -0500
+
+    Modulo usuario: Finalizado
+
+[33mcommit 85d62f02f510a968134230a144af3d123b8be614[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Wed Jan 3 07:44:02 2024 -0500
+
+    Funcionalidad roles y permisos terminada para: administrador, usuarios, y repartidor
+
+[33mcommit b792c8a74784c655296e735bfad0daae4b732e8e[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Sat Dec 30 20:11:46 2023 -0500
+
+    Vistas aceptarPedido y administrarPedidos: Finalizadas
+
+[33mcommit bd4c75052487c13761d5d22b0d5fb7ed1cc08a9c[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Sat Dec 30 18:52:17 2023 -0500
+
+    Vistas nueva venta y lista de ventas: Finalizadas
+
+[33mcommit 98e42df2efe4be10a4b0da677bf2f440dd88754c[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Sat Dec 30 16:46:13 2023 -0500
+
+    Funcionalidad visualizar pedidos y ventas realizadas:Finalizada
+
+[33mcommit 7e89978a86ab9e9d8f86f451ebfe8fef03695976[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Sat Dec 30 10:57:02 2023 -0500
+
+    Funcionalidad registrar pedidos y despacharlos: Rol vendedor
+
+[33mcommit f2d44f5e86688fd05022bdf6de67893f24fd158c[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Fri Dec 29 17:40:59 2023 -0500
+
+    Funcionalidad registar ventas:finalizada y funcionalidad: crear vista pedidos: inicializada
+
+[33mcommit a4632788a7399f2423054f297f22439bfa2e3319[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Thu Dec 28 21:58:51 2023 -0500
+
+    Modulo usuario-vendedor: crearProducto (finalizado)
+
+[33mcommit eccde7d6f23e8dd6b555e79e6dca04335907e82d[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Wed Dec 27 16:45:50 2023 -0500
+
+    Sistema de roles completada
+
+[33mcommit 5d50223cd3245a0aa6c76eb8cc98b64dc4fee36f[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Wed Dec 27 13:50:29 2023 -0500
+
+    Implementación de administración de roles y permisos
+
+[33mcommit 1ad4e6155ca1ef32f91bf378e0aaf62494066a91[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Wed Dec 27 12:16:03 2023 -0500
+
+    Activación de botones eliminar y editar en la vista Administración de productos
+
+[33mcommit 435f13f7675b7c6ab0d0abd8d81b4a5ec0ef7b32[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Wed Dec 27 10:37:54 2023 -0500
+
+    Implementando el registro de usuarios a la base de datos- tabla productos
+
+[33mcommit ddd1df6f5157191b01f2240d9fe81dfaf49d632c[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Tue Dec 26 21:16:01 2023 -0500
+
+    Cración del formulario para registrar productos
+
+[33mcommit 3fe3da007af1c55f31cc80d0213dfaab7e123769[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Tue Dec 26 18:56:50 2023 -0500
+
+    Creación del modelo producto y migración de la tabla a la base de datos
+
+[33mcommit 02f1876b647693dfd029b7f8f4639f9972728a1d[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Tue Dec 26 18:03:54 2023 -0500
+
+    Implementación de dashboard administrativo admin lte
+
+[33mcommit 7956fddd23592bcbf469b5808d152595fd9958b0[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Tue Dec 26 17:20:01 2023 -0500
+
+    Implementación de sistema de autenticación con jetstream y bootstrap
+
+[33mcommit eb9648f18844a1820d34a14851b591eec88a966f[m
+Author: Nicolaser1102 <nicomora110202@hotmail.com>
+Date:   Tue Dec 26 15:46:10 2023 -0500
+
+    Inicio del proyecto FEDAC-app

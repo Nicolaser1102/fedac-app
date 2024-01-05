@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AsignarController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\UsuarioController;
@@ -32,9 +33,25 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+
+    // Route::get('/dashboard', [AuthController::class, 'dashboard']);
+
+    // Route::middleware([
+    //     'auth:sanctum',
+    //     config('jetstream.auth_session'),
+    //     'verified',
+    // ])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+
+
+    Route::get('/auth/redirect', [AuthController::class,'redirect']);
+
+
+    Route::get('/auth/callback-url', [AuthController::class,'callback']);
 
     //Ruta para acceder a las opciones de perfil
     Route::get('/profile',[UsuarioController::class, 'profile']);
