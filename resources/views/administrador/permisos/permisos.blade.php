@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Permisos')
 
 @section('content_header')
     <h1>Administración de Permisos</h1>
 @stop
 
 @section('content')
-    <p>Lista de Usuarios</p>
+    <p>Lista de Permisos</p>
 
     <div class="card">
 

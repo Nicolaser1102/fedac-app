@@ -2,10 +2,10 @@
 
 
 
-@section('title', 'Dashboard')
+@section('title', 'Carrito')
 
 @section('content_header')
-    <h1>Información del carrito de compras: <strong>{{$codVenta}}</strong></h1>
+    <h1>Carrito de compras: <strong>{{$codVenta}}</strong></h1>
 @stop
 
 @section('content')

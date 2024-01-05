@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Comprar productos')
 
 @section('content_header')
     <h1>Productos</h1>
 @stop
 
 @section('content')
-    <h4>Lista de productos disponibles para comprar</h4>
+    <h4>Productos disponibles</h4>
     <hr>
 
 

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Pedidos')
 
 @section('content_header')
-    <h1>Visualización de los pedidos del usuario</h1>
+    <h1>Historial de pedidos</h1>
 @stop
 
 @section('content')
