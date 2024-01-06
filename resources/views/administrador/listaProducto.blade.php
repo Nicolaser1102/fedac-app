@@ -9,6 +9,8 @@
 @section('content')
     <p>Lista de Productos</p>
 
+    <a href="{{route('producto.generarReporte')}}" type="button">XD</a>
+
     <div class="card">
         <div class="card-body">
 

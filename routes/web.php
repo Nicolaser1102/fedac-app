@@ -57,6 +57,10 @@ Route::middleware([
 
     //Ruta que me permite utilizar el controlador de Producto
     Route::resource('/producto', ProductoController::class) ->names('producto');
+    //Ruta para llamar a los reportes
+    Route::get('/reporteProductos', [ProductoController::class, 'generarReporte'])->name('producto.generarReporte');
+
+
 
     //Ruta de recursos para controlar los roles de Usuario
     Route::resource('/roles', RoleController::class)->names('roles');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Producto as ModelsProducto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -139,5 +140,14 @@ class ProductoController extends Controller
 
         $producto->delete();
         return back();
+    }
+
+    public function generarReporte(){
+
+        $productos = ModelsProducto::all();
+        $fecha = Carbon::now();
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('administrador.reporteProductos',compact('fecha','productos'));
+
+     return $pdf->stream($fecha.'-reporteProductos.pdf');
     }
 }

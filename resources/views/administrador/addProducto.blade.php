@@ -156,7 +156,7 @@
 
             Swal.fire({
                     title: "Guardado!",
-                    text: "El producto ha sido editado correctamente.",
+                    text: "El producto ha sido guardado correctamente.",
                     icon: "success"
                     });
 
