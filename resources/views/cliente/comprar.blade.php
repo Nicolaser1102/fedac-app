@@ -13,7 +13,7 @@
 
     <div class="grid">
 
-        @foreach($productos->chunk(4) as $chunk)
+        @foreach($productos->chunk(3) as $chunk)
             <div class="card-group">
                 @foreach($chunk as $producto)
                     @if ($producto->stock > 0)

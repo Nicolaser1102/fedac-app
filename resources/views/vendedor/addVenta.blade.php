@@ -141,17 +141,39 @@
     {{-- Modal para registrar un nuevo registro en user_venta --}}
 <x-adminlte-modal id="modalPurple" title="Datos de entrega" theme="purple"
 icon="fas fa-truck" size='lg' disable-animations>
-    <form action="{{route('users_ventas.store')}}" method="post" class="eliminarVenta">
+    <form action="{{route('users_ventas.store')}}" method="post" class="eliminarVenta" id="modalForm" name="f1">
         @csrf
 
-        <div class="row">
-            <x-adminlte-input name="direccion" label="Dirección de entrega" placeholder="Aquí su dirección..."
-            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
+        <div class="col">
+
+                <div class="col-8">
+
+                    <div class="mb-3">
+                        <label for="basic-url" class="form-label">Dirección de entrega</label>
+
+                            <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Aquí su dirección" aria-label="Username" aria-describedby="basic-addon1"
+                            onblur="verificarDireccion()" >
+                            <div id="error" style="color: red"></div>
+
+                        <div class="form-text" id="basic-addon4">Ejm: "Av. Siempre Viva. Conjunto Alpallana, Casa 2. Oe-145"</div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+
+                    <div class="mb-3">
+                        <label for="basic-url" class="form-label">Número de contacto</label>
+
+                            <input type="text" id="telefono" name="numTelefono" class="form-control" placeholder="Aquí su número de teléfono/celular" aria-label="Username" aria-describedby="basic-addon1"
+                            onblur="verificarTelefono()">
+                            <div id="error-telefono" style="color: red"></div>
+
+                        <div class="form-text" id="basic-addon4">Ejm: "0989076548/02-34567"</div>
+                    </div>
+                </div>
+
         </div>
-        <div class="row">
-            <x-adminlte-input name="numTelefono" label="Número de teléfono" placeholder="Aquí el número de teléfono de contacto..."
-            fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
-        </div>
+
 
         {{-- Campos escondidos para valor Total y el estado, e incluido el user_id + codVenta --}}
         <div class="row">
@@ -171,7 +193,7 @@ icon="fas fa-truck" size='lg' disable-animations>
             fgroup-class="col-md-6" disable-feedback></x-adminlte-input>
         </div>
 
-        <x-adminlte-button type="submit" label="Guardar" theme="outline-danger" icon="fas fa-key"></x-adminlte-button>
+        <x-adminlte-button type="submit" label="Guardar" theme="outline-danger" icon="fas fa-key" id="boton" disabled></x-adminlte-button>
 
     </form>
 </x-adminlte-modal>
@@ -186,6 +208,9 @@ icon="fas fa-truck" size='lg' disable-animations>
 @section('js')
 
 <script>
+
+
+
     $(document).ready(function(){
         $('.eliminarVenta').submit(function(e){
                 e.preventDefault();
@@ -199,7 +224,81 @@ icon="fas fa-truck" size='lg' disable-animations>
             });
 
 })
-})
+});
+
+
+    let direccionVerificada = false;
+    let telefonoVerificado = false;
+
+verificarDireccion = function(){
+
+    var Min_Length = 10;
+    var length = document.getElementById("direccion").value.length;
+    if (length < Min_Length) {
+    var direccionUser = document.getElementById("error");
+    direccionUser.innerHTML = "Ingrese una dirección válida";
+     direccionVerificada = false;
+
+     deshabilitarBotonGuardar();
+
+    }else{
+        var direccionUser = document.getElementById("error");
+        direccionUser.innerHTML = "";
+        direccionVerificada = true;
+    }
+
+    if(direccionVerificada == true && telefonoVerificado == true){
+        habilitarBotonGuardar();
+    }
+
+    }
+
+
+
+
+verificarTelefono = function(){
+
+var Min_Length = 10;
+var length = document.getElementById("telefono").value.length;
+if (length < Min_Length) {
+        var TelefonoUser = document.getElementById("error-telefono");
+        TelefonoUser.innerHTML = "Ingrese un número de teléfono válido";
+        telefonoVerificado = false;
+        deshabilitarBotonGuardar();
+
+} else if(isNaN(parseInt(document.getElementById("telefono").value))){
+    var TelefonoUser = document.getElementById("error-telefono");
+        TelefonoUser.innerHTML = "El campo solo permite números";
+        telefonoVerificado = false;
+        deshabilitarBotonGuardar();
+}
+else{
+    var TelefonoUser = document.getElementById("error-telefono");
+    TelefonoUser.innerHTML = "";
+    telefonoVerificado = true;
+}
+
+if(direccionVerificada == true && telefonoVerificado == true){
+        habilitarBotonGuardar();
+    }
+
+}
+
+
+habilitarBotonGuardar = function(){
+
+    var botoncmp = document.getElementById('boton');
+    botoncmp.disabled = false;
+
+}
+
+deshabilitarBotonGuardar = function(){
+    var botoncmp = document.getElementById('boton');
+        botoncmp.disabled = true;
+}
+
+
+
 </script>
 
 

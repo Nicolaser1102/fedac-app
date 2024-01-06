@@ -34,6 +34,13 @@ class UserVentaController extends Controller
     {
         //
 
+        //Realizar validaciones a la request
+        $validacion = $request-> validate([
+            'direccion' =>'required|min:10',
+            'numTelefono' => 'required|numeric|max:10000000000',
+
+        ]);
+
 
         $newUserVenta = new UsersVenta();
 
