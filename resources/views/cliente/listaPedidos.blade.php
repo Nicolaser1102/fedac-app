@@ -19,6 +19,7 @@
             ['label'=> 'Estado', 'width' => 40],
             ['label' => 'Total', 'width' => 5],
             ['label' => 'Ver productos', 'no-export' => true, 'width' => 5],
+            ['label' => 'Comprobante', 'no-export' => true, 'width' => 5],
         ];
 
         $cont =0;
@@ -48,6 +49,11 @@
                                     <td>
                                         <a href="{{route('comprar.edit' , $pedido->codVenta)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Ver productos">
                                             <i class="fa fa-lg fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('comprar.generarComprobante', $pedido->codVenta )}}" type="button" class="btn btn-xs btn-default text-primary mx-2 shadow" title="Generar comprobante">
+                                            <i class="fa fa-lg fa-fw fa-file"></i>
                                         </a>
                                     </td>
                                 </tr>

@@ -9,7 +9,9 @@
 @section('content')
     <p>Lista de Productos</p>
 
-    <a href="{{route('producto.generarReporte')}}" type="button">XD</a>
+    <div class="d-flex justify-content-end mb-1">
+    <a href="{{route('producto.generarReporte')}}" type="button" class="btn btn-primary">Generar reporte de productos</a>
+    </div>
 
     <div class="card">
         <div class="card-body">

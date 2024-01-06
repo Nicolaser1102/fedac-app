@@ -6,6 +6,7 @@ use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\UsersVenta;
 use App\Models\Venta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -124,6 +125,7 @@ class ClienteController extends Controller
         $id_currentUser = Auth::id();
 
         //Filtrar las ventas según su codigoVenta
+
         $ventasPorCodVenta = Venta::where('codigoVenta', $codVenta)->get();
 
         $pedidos = UsersVenta::where('user_id', $id_currentUser)->get();
@@ -146,6 +148,21 @@ class ClienteController extends Controller
     {
         //
 
+
+    }
+
+
+    public function generarComprobante($codVenta){
+
+
+        $userVentaPedido = UsersVenta::where('codVenta', $codVenta)->first();
+
+
+        $compraOnline = Venta::where('codigoVenta', $codVenta)->get();
+        $fecha = Carbon::now();
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('cliente.comprobanteVenta' ,compact('compraOnline','userVentaPedido','fecha','codVenta'));
+
+     return $pdf->stream($fecha.'-comprobanteCompra.pdf');
 
     }
 }

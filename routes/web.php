@@ -95,6 +95,8 @@ Route::middleware([
     //Ruta de recursos para controlar la vista que tendrá el usuario para realizar las compras en línea
     Route::resource('/comprar', ClienteController::class)->names('comprar');
     Route::get('/infoPedidos', [ClienteController::class, 'infoPedidos'])->name('comprar.infoPedidos');
+    Route::get('/comprobanteVenta/{codVenta}', [ClienteController::class, 'generarComprobante'])->name('comprar.generarComprobante');
+    //Ruta para generar el pdf
 
 
 

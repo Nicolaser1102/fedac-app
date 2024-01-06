@@ -129,7 +129,7 @@
             @elseif ($producto->fechaVencProd < $fecha)
             <td style="color: red">{{$producto->fechaVencProd }}</td>
             @else
-            <td>{{$producto->fechaVencProd }}</td>
+            <td style="color: green">>{{$producto->fechaVencProd }}</td>
             @endif
 
 
